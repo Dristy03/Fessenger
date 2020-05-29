@@ -36,5 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         SendMail sendMail=new SendMail(this,email,message);
         sendMail.execute();
+        editTextMessage.setText("");
+        editTextEmail.setText("");
     }
 }
