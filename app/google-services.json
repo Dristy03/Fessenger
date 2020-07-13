@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "868477190169",
+    "firebase_url": "https://fessenger-1feff.firebaseio.com",
+    "project_id": "fessenger-1feff",
+    "storage_bucket": "fessenger-1feff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868477190169:android:5407297f4e6be491d86a88",
+        "android_client_info": {
+          "package_name": "com.example.futureme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868477190169-gmmnln0uhd71nj4hhk9muksqkpd5jfhp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEafBGVHPLuRriKHo958tDZOnp_CghUSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868477190169-gmmnln0uhd71nj4hhk9muksqkpd5jfhp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

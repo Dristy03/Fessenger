@@ -1,42 +1,84 @@
 package com.example.futureme;
 
-import androidx.appcompat.app.AppCompatActivity;
 
+
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText editTextEmail;
-    private EditText editTextMessage;
-    private Button buttonSend;
 
+ CardView cardSendMail;
+ CardView cardContactUs;
+ CardView cardHistory;
+ CardView cardLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+          cardSendMail=findViewById(R.id.sendMail);
+          cardHistory=findViewById(R.id.history);
+          cardContactUs=findViewById(R.id.containUs);
+          cardLogout=findViewById(R.id.logout);
 
-        editTextEmail=findViewById(R.id.emailaddress);
-        editTextMessage=findViewById(R.id.email);
-        buttonSend=findViewById(R.id.buttonSendId);
-
-        buttonSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendEmail();
-            }
-        });
+          cardSendMail.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Intent intent = new Intent(MainActivity.this,ContentMain.class);
+                  startActivity(intent);
+              }
+          });
+          cardLogout.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  confirm();
+              }
+          });
     }
 
-    private void sendEmail() {
-        String email=editTextEmail.getText().toString().trim();
-        String message=editTextMessage.getText().toString().trim();
+    private void confirm() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.logout_dialog, null);
 
-        SendMail sendMail=new SendMail(this,email,message);
-        sendMail.execute();
-        editTextMessage.setText("");
-        editTextEmail.setText("");
+        Button yesButton = view.findViewById(R.id.btnYes);
+        Button noButton = view.findViewById(R.id.btnNo);
+
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                logout();
+            }
+        });
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
+
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(MainActivity.this,WelcomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

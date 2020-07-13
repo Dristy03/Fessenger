@@ -7,7 +7,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:weightSum="1"
-    android:background="@drawable/bg1"
+    android:background="@drawable/welbg"
     tools:context=".WelcomeActivity">
 
     <LinearLayout
@@ -21,19 +21,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fessenger"
-            android:textColor="@android:color/white"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            android:fontFamily="cursive"/>
+            android:textColor="#749CC2"
+            android:fontFamily="@font/wel"
+            android:textSize="40sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Messenger To Connect To The Future"
-            android:textColor="@android:color/white"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="15sp"/>
+            android:text="Messenger that connects you to the Future"
+            android:textColor="#9FBBD6"
+            android:fontFamily="@font/wel2"
+            android:textSize="20sp"/>
+
     </LinearLayout>
 
 
@@ -46,15 +45,25 @@
 
 
         <Button
-            android:id="@+id/angry_btn"
-
-            android:text="GET STARTED"
-            android:textColor="#000000"
-            android:textSize="15sp"
-
-            android:layout_width="230dp"
-            android:layout_height="50dp"
+            android:id="@+id/login_btn"
+            android:text="LOGIN"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_width="250dp"
+            android:layout_height="46dp"
             android:background="@drawable/buttonshape"
+            />
+
+        <Button
+            android:id="@+id/register_btn"
+
+            android:text="SIgnup"
+            android:textColor="#749CC2"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="250dp"
+            android:layout_height="46dp"
+            android:background="@drawable/buttonshape2"
             />
 
 

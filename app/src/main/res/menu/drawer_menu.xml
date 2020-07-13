@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:title="History"
+        android:id="@+id/history"
+        android:icon="@drawable/ic_folder_open_black_24dp"
+        />
+    <item
+        android:title="Contact us"
+        android:id="@+id/contact"
+        android:icon="@drawable/ic_phone_android_black_24dp"
+        />
+    <item
+        android:title="Logout"
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        />
+</menu>
