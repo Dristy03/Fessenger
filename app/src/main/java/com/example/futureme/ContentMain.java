@@ -85,7 +85,7 @@ public class ContentMain extends AppCompatActivity  {
     private void addToDatabase() {
         String message = editTextMessage.getText().toString().trim();
         String arrivalDate=textDate.getText().toString().trim();
-        String email= FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        String email= Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
         Map<String,Object> map= new HashMap<>();
         map.put("Message",message);
         map.put("Date",arrivalDate);
