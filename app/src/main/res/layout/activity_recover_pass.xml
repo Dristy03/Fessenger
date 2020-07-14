@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:gravity="center"
+    android:padding="15dp"
+    android:orientation="vertical"
+    tools:context=".RecoverPassActivity">
+
+    <ImageButton
+        android:id="@+id/backbtnId"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/back"
+        android:layout_gravity="start"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/wel"
+            android:text="Forgot Password?"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="25sp" />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="We need your registered email id to send you password reset instructions."
+        android:textSize="15sp"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/wel2"
+        android:textColor="@color/colorPrimary"
+        />
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:secondaryColor="#749CC2"
+        app:primaryColor="#6FB3F8"
+        app:iconSignifier="@drawable/ic_mail_outline_black_24dp"
+        app:useDenseSpacing="true"
+        android:padding="5dp"
+       android:layout_marginTop="25dp"
+        app:hasClearButton="true"
+        app:labelText="Email Address"
+        >
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/email_recoveryId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:inputType="textEmailAddress"
+            />
+
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <Button
+        android:id="@+id/recover_btn"
+        android:text="Reset Password"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="45dp"
+        android:textSize="14sp"
+        android:layout_width="200dp"
+        android:layout_height="46dp"
+        android:background="@drawable/buttonshape"
+        />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+
+</LinearLayout>

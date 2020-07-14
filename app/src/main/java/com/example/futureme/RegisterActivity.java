@@ -129,6 +129,7 @@ public class RegisterActivity extends AppCompatActivity {
         map.put("Email",email);
         map.put("Password",password);
         map.put("Name",username);
+        map.put("MailCounter",1000);
         FirebaseFirestore.getInstance().collection("Users").document(email).set(map)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

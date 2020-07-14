@@ -73,6 +73,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+        forget_pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,RecoverPassActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void loginUser(String email, String password) {
