@@ -42,7 +42,7 @@ public class ContentMain extends AppCompatActivity  {
     private TextView textDate;
     private TextView textTime;
     private ProgressDialog pd;
-    private String yearS,monthS,dayS,email,message,arrivalDate,Id;
+    private String yearS,monthS,dayS,email,message,title,arrivalDate,Id;
     int cnt;
 
 
@@ -75,20 +75,32 @@ public class ContentMain extends AppCompatActivity  {
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pd.setTitle("Sending mail to the future...");
-                pd.show();
-                processTheCounter();
+                message = editTextMessage.getText().toString().trim();
+                arrivalDate=textDate.getText().toString().trim();
+                title=editTextTitle.getText().toString().trim();
+                if(title.length()<1)
+                {
+                    editTextTitle.setError("This field shouldn't be empty!");
+                    editTextTitle.setFocusable(true);
+                }else if(message.length()<1)
+                {
+                    editTextMessage.setError("This field shouldn't be empty!");
+                    editTextMessage.setFocusable(true);
+                }else
+                {
+                    pd.setTitle("Sending mail to the future...");
+                    pd.show();
+                    processTheCounter();
+
+                }
 
             }
         });
     }
 
     private void processTheCounter() {
-        message = editTextMessage.getText().toString().trim();
-        arrivalDate=textDate.getText().toString().trim();
+
         email= Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
-
-
 
         DocumentReference dr = FirebaseFirestore.getInstance().collection("Users").document(email);
         dr.update("MailCounter", FieldValue.increment(1));
@@ -116,6 +128,7 @@ public class ContentMain extends AppCompatActivity  {
         Map<String,Object> map= new HashMap<>();
         map.put("Email",email);
         map.put("Message",message);
+        map.put("Title",title);
         map.put("Date",arrivalDate);
 
 
@@ -142,6 +155,7 @@ public class ContentMain extends AppCompatActivity  {
         Map<String,Object> map1= new HashMap<>();
         map1.put("Email",email);
         map1.put("Message",message);
+        map1.put("Title",title);
         map1.put("Date",arrivalDate);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();

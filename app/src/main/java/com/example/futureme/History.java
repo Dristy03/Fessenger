@@ -4,12 +4,22 @@ public class History {
     private String Date;
     private String Message;
     private String Email;
+    private String Title;
 
 
-    public History(String date, String message, String email) {
+    public History(String date, String message,String title, String email) {
         Date = date;
         Message = message;
         Email = email;
+        Title = title;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
     }
 
     public History() {
@@ -45,6 +55,7 @@ public class History {
                 "Date='" + Date + '\'' +
                 ", Message='" + Message + '\'' +
                 ", Email='" + Email + '\'' +
+                ", Title='" + Title + '\'' +
                 '}';
     }
 }
