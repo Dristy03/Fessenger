@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="10dp"
+    app:cardCornerRadius="24dp"
+    android:layout_margin="10dp"
+    android:padding="10dp"
+    app:cardBackgroundColor="@color/colorPrimary"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A message has been set off to your future self!"
+            android:fontFamily="@font/wel"
+            android:textColor="@android:color/white"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arrival Date :"
+            android:fontFamily="@font/wel2"
+            android:textColor="@android:color/white"
+            android:layout_margin="10dp"
+            android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/dateId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Friday,3rd Mar 2027"
+                android:fontFamily="@font/wel"
+                android:textColor="@android:color/white"
+                android:layout_margin="10dp"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

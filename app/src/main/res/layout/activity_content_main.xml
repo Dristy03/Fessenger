@@ -34,27 +34,27 @@
             android:fontFamily="@font/wel"
             android:gravity="center"/>
 
-        <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             app:secondaryColor="#749CC2"
             app:primaryColor="#6FB3F8"
-            app:iconSignifier="@drawable/ic_mail_outline_black_24dp"
+
             app:useDenseSpacing="true"
             android:padding="5dp"
             app:hasClearButton="true"
-            app:labelText="Gmail Address"
+            app:labelText="Title of the message"
             >
             <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                android:id="@+id/email_main"
+                android:id="@+id/email_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 />
 
-        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
         <EditText
             android:id="@+id/email"

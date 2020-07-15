@@ -57,4 +57,7 @@ dependencies {
     //lottie
     implementation 'com.airbnb.android:lottie:3.4.0'
 
+    //RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.firebaseui:firebase-ui-firestore:6.2.1'
 }
