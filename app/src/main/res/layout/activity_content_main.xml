@@ -30,14 +30,14 @@
             android:text="Write To Your Future"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="30sp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/wel"
             android:gravity="center"/>
 
         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             app:secondaryColor="#749CC2"
             app:primaryColor="#6FB3F8"
 

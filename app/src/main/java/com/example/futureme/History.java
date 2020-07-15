@@ -5,13 +5,23 @@ public class History {
     private String Message;
     private String Email;
     private String Title;
+    private long Priority;
 
 
-    public History(String date, String message,String title, String email) {
+    public History(String date, String message,String title, String email, long priority) {
         Date = date;
         Message = message;
         Email = email;
         Title = title;
+        Priority = priority;
+    }
+
+    public long getPriority() {
+        return Priority;
+    }
+
+    public void setPriority(long priority) {
+        Priority = priority;
     }
 
     public String getTitle() {
@@ -56,6 +66,7 @@ public class History {
                 ", Message='" + Message + '\'' +
                 ", Email='" + Email + '\'' +
                 ", Title='" + Title + '\'' +
+                ", Priority=" + Priority +
                 '}';
     }
 }

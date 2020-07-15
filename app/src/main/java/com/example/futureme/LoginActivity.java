@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         back=findViewById(R.id.backbtn);
         btnLogin=findViewById(R.id.login_btn);
         forget_pass=findViewById(R.id.forgetpass);
-        pd = new ProgressDialog(this);
+        pd = new ProgressDialog(this,R.style.DialogTheme);
         pd.setTitle("Logging in...");
         pd.setCancelable(false);
         mAuth = FirebaseAuth.getInstance();

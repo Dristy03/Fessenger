@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnBck = findViewById(R.id.backbtn);
         btnSignup = findViewById(R.id.signup_btn);
         mAuth = FirebaseAuth.getInstance();
-        pd = new ProgressDialog(this);
+        pd = new ProgressDialog(this,R.style.DialogTheme);
         pd.setTitle("Signing up...");
         pd.setCancelable(false);
 

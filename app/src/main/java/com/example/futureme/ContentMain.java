@@ -35,14 +35,22 @@ import java.util.Objects;
 public class ContentMain extends AppCompatActivity  {
 
     private static final String TAG = "ContentMain";
-    private EditText editTextMessage,editTextTitle;
+    private EditText editTextMessage;
+    private EditText editTextTitle;
     private Button buttonSend;
     private ImageView btnDate;
     private ImageButton btnBack;
     private TextView textDate;
     private TextView textTime;
     private ProgressDialog pd;
-    private String yearS,monthS,dayS,email,message,title,arrivalDate,Id;
+    private String yearS;
+    private String monthS;
+    private String dayS;
+    private String email;
+    private String message;
+    private String title;
+    private String arrivalDate;
+    private String Id;
     int cnt;
 
 
@@ -57,7 +65,7 @@ public class ContentMain extends AppCompatActivity  {
         btnBack=findViewById(R.id.menuButton);
         btnDate=findViewById(R.id.dateId);
         textDate=findViewById(R.id.textviewId);
-        pd = new ProgressDialog(this);
+        pd = new ProgressDialog(this,R.style.DialogTheme);
         pd.setCancelable(false);
         btnBack.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -125,11 +133,29 @@ public class ContentMain extends AppCompatActivity  {
     }
 
     private void addToMailDatabase() {
+
         Map<String,Object> map= new HashMap<>();
+        Map<String,Object> mapp= new HashMap<>();
+        mapp.put("SentAllMails",false);
         map.put("Email",email);
         map.put("Message",message);
         map.put("Title",title);
         map.put("Date",arrivalDate);
+
+        FirebaseFirestore.getInstance().collection("MailDatabase").document(yearS).collection(monthS)
+                .document(dayS).set(mapp)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                        Toast.makeText(ContentMain.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
 
         FirebaseFirestore.getInstance().collection("MailDatabase").document(yearS).collection(monthS)
@@ -152,11 +178,20 @@ public class ContentMain extends AppCompatActivity  {
 
     private void addToDatabase() {
 
+
+        Calendar calendar= Calendar.getInstance();
+        int YEAR = calendar.get(Calendar.YEAR);
+        int MONTH = calendar.get(Calendar.MONTH);
+        int DATE = calendar.get(Calendar.DATE);
+        long a= YEAR*100+MONTH;
+        a= a*100+DATE;
+
         Map<String,Object> map1= new HashMap<>();
         map1.put("Email",email);
         map1.put("Message",message);
         map1.put("Title",title);
         map1.put("Date",arrivalDate);
+        map1.put("Priority",a);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Mails").document(email).collection("Details").document(Id)
@@ -187,7 +222,7 @@ public class ContentMain extends AppCompatActivity  {
         int MONTH = calendar.get(Calendar.MONTH);
         int DATE = calendar.get(Calendar.DATE);
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,  R.style.DialogTheme,new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int date) {
 
