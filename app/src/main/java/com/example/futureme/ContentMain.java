@@ -51,6 +51,7 @@ public class ContentMain extends AppCompatActivity  {
     private String title;
     private String arrivalDate;
     private String Id;
+    private String mailId;
     int cnt;
 
 
@@ -125,6 +126,7 @@ public class ContentMain extends AppCompatActivity  {
                         cnt = document.getLong("MailCounter").intValue();
                         Log.d(TAG, "DocumentSnapshot data: " + cnt);
                         Id = Integer.toString(cnt);
+                        mailId=email+Id;
                         addToMailDatabase();
                     }
                 }
@@ -159,8 +161,8 @@ public class ContentMain extends AppCompatActivity  {
 
 
         FirebaseFirestore.getInstance().collection("MailDatabase").document(yearS).collection(monthS)
-                .document(dayS).collection(email)
-                .document(Id).set(map)
+                .document(dayS).collection("Emails")
+                .document(mailId).set(map)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
