@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@drawable/main_bg"
+    tools:context=".EmailMeActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/backbtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            android:background="@drawable/transparent_bg"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="anannadristy03@gmail.com"
+            android:background="@drawable/roundshapeedttext"
+           android:padding="10dp"
+            android:drawableStart="@drawable/ic_mail_outline_black_24dp"
+            android:drawableTint="@color/colorPrimary"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/hellofont"
+            android:gravity="center"/>
+
+       <!-- <TextView
+            android:id="@+id/titleId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name of the problem"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="30dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/hellofont"
+            />-->
+
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundshapeedttext"
+            android:gravity="top|left"
+            android:padding="15dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/colorPrimary"
+            android:layout_marginTop="40dp"
+            android:minLines="10"
+            android:maxLines="200"
+            android:inputType="textMultiLine|textAutoCorrect"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <Button
+                android:id="@+id/submitId"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundshapeedttext"
+                android:text="Submit"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</androidx.core.widget.NestedScrollView>

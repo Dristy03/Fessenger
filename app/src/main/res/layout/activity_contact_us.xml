@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:background="@drawable/main_bg"
+    tools:context=".ContactUsActivity">
+
+    <ImageButton
+        android:id="@+id/backbtnId"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        android:background="@drawable/transparent_bg"
+        android:layout_gravity="start"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.airbnb.lottie.LottieAnimationView
+
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:scrollbarSize="40dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="contactus.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contact Us"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/wel2"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How can we help you? We will love to hear!"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/hellofont"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/helpBtnId"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonshape"
+            android:layout_marginTop="50dp"
+            android:text="Help Us Improve Fessenger"/>
+        <Button
+            android:id="@+id/wrongBtnId"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonshape"
+            android:layout_marginTop="10dp"
+            android:text="Something went wrong?"/>
+        <Button
+            android:id="@+id/remarksBtnId"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonshape"
+            android:layout_marginTop="10dp"
+            android:text="Remarks"/>
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

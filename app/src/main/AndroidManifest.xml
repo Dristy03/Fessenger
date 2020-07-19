@@ -11,6 +11,9 @@
         android:roundIcon="@mipmap/icon_xd_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".EmailMeActivity"></activity>
+        <activity android:name=".ContactUsActivity" />
+
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
@@ -18,7 +21,8 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name=".HistoryActivity"></activity>
+
+        <activity android:name=".HistoryActivity" />
         <activity android:name=".RecoverPassActivity" />
         <activity android:name=".ContentMain" />
         <activity android:name=".RegisterActivity" />
@@ -38,7 +42,6 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
-
     </application>
 
 </manifest>

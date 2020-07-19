@@ -46,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
                   startActivity(intent);
               }
           });
+          cardContactUs.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Intent intent = new Intent(MainActivity.this,ContactUsActivity.class);
+                  startActivity(intent);
+              }
+          });
           cardLogout.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {

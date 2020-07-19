@@ -275,14 +275,6 @@ public class ContentMain extends AppCompatActivity  {
         datePickerDialog.show();
     }
 
-    /*private void sendEmail() {
-        String email= Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
-         String message=editTextMessage.getText().toString().trim();
 
-         SendMail sendMail=new SendMail(this,email,message);
-         sendMail.execute();
-         editTextMessage.setText("");
-
-     }*/
 
 }
