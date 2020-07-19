@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,23 +8,27 @@
     android:layout_height="match_parent"
     android:background="@drawable/logresbg"
     android:weightSum="1"
-
     tools:context=".LoginActivity"
     android:orientation="vertical">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
-        android:orientation="vertical"
+
+        android:orientation="horizontal"
         >
+
+
         <ImageButton
             android:id="@+id/backbtn"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:background="@drawable/transparent_bg"
 
-            />
+            android:background="@drawable/transparent_bg"
+            android:src="@drawable/ic_arrow_back_black_24dp" />
+
 
 
     </LinearLayout>
@@ -42,14 +47,14 @@
             android:layout_height="wrap_content"
             android:text="Get on board!!!"
             android:fontFamily="@font/small"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:textColor="@android:color/white"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Few steps to write to your future."
             android:textColor="#749CC2"
-            android:textSize="20sp"/>
+            android:textSize="15sp"/>
 
     </LinearLayout>
 
@@ -70,56 +75,56 @@
             app:cardElevation="10dp"
             app:cardBackgroundColor="#F0FAFF"
             >
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:gravity="center"
+                android:orientation="vertical">
+
+               <!-- <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:secondaryColor="#749CC2"
-                    app:primaryColor="#6FB3F8"
-                    app:iconSignifier="@drawable/ic_account_circle_black_24dp"
-                    app:useDenseSpacing="true"
-                    app:hasClearButton="true"
                     android:padding="5dp"
-                    app:maxCharacters="20"
+                    app:hasClearButton="true"
                     app:helperText="Choose a unique name"
                     app:helperTextColor="#FD6A86"
+                    app:iconSignifier="@drawable/ic_account_circle_black_24dp"
                     app:labelText="User name"
-                    >
+                    app:maxCharacters="20"
+                    app:primaryColor="#6FB3F8"
+                    app:secondaryColor="#749CC2"
+                    app:useDenseSpacing="true">
+
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/username_signup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
                         android:inputType="text"
-                        />
+                        android:textColor="@android:color/black" />
 
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:secondaryColor="#749CC2"
-                    app:primaryColor="#6FB3F8"
-                    app:iconSignifier="@drawable/ic_mail_outline_black_24dp"
-                    app:useDenseSpacing="true"
                     android:padding="5dp"
+                    app:hasClearButton="true"
                     app:helperText="Enter a gmail address"
                     app:helperTextColor="#FD6A86"
-                    app:hasClearButton="true"
+                    app:iconSignifier="@drawable/ic_mail_outline_black_24dp"
                     app:labelText="Email Address"
-                    >
+                    app:primaryColor="#6FB3F8"
+                    app:secondaryColor="#749CC2"
+                    app:useDenseSpacing="true">
+
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/email_signup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
                         android:inputType="textEmailAddress"
-                        />
+                        android:textColor="@android:color/black" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -127,22 +132,21 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:secondaryColor="#749CC2"
-                    app:primaryColor="#6FB3F8"
-                    app:iconSignifier="@drawable/ic_vpn_key_black_24dp"
-                    app:useDenseSpacing="true"
-                    app:hasClearButton="true"
                     android:padding="5dp"
-                    app:maxCharacters="15"
+                    app:hasClearButton="true"
+                    app:iconSignifier="@drawable/ic_vpn_key_black_24dp"
                     app:labelText="Password"
-                    >
+                    app:maxCharacters="15"
+                    app:primaryColor="#6FB3F8"
+                    app:secondaryColor="#749CC2"
+                    app:useDenseSpacing="true">
+
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/password_signup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
                         android:inputType="textPassword"
-                        />
+                        android:textColor="@android:color/black" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -150,35 +154,33 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:secondaryColor="#749CC2"
-                    app:primaryColor="#6FB3F8"
-                    app:iconSignifier="@drawable/ic_vpn_key_black_24dp"
-                    app:useDenseSpacing="true"
-                    app:hasClearButton="true"
                     android:padding="5dp"
-                    app:maxCharacters="15"
+                    app:hasClearButton="true"
+                    app:iconSignifier="@drawable/ic_vpn_key_black_24dp"
                     app:labelText="Confirm Password"
-                    >
+                    app:maxCharacters="15"
+                    app:primaryColor="#6FB3F8"
+                    app:secondaryColor="#749CC2"
+                    app:useDenseSpacing="true">
+
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/conpassword_signup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
                         android:inputType="textPassword"
-                        />
+                        android:textColor="@android:color/black" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <Button
                     android:id="@+id/signup_btn"
-                    android:text="SIGNUP"
-                    android:textColor="#FFFFFF"
-                    android:layout_marginTop="15dp"
-                    android:textSize="18sp"
                     android:layout_width="250dp"
                     android:layout_height="46dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/buttonshape"
-                    />
+                    android:text="SIGNUP"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 

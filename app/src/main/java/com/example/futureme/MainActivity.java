@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,9 +81,15 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null) FirebaseMessaging.getInstance().subscribeToTopic((FirebaseAuth.getInstance().getCurrentUser().getEmail()).replace('@','_'));
+    }
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null)FirebaseMessaging.getInstance().unsubscribeFromTopic((FirebaseAuth.getInstance().getCurrentUser().getEmail()).replace('@','_'));
         Intent intent = new Intent(MainActivity.this,WelcomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

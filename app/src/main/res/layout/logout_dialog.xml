@@ -5,12 +5,12 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="#9DD9F4"
+    android:background="#CBEAF1"
     android:layout_margin="20dp"
     >
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:src="@drawable/leave"
         android:layout_gravity="center_horizontal"
         />
@@ -21,7 +21,7 @@
         android:text="Are you sure you want to leave Fessenger?"
         android:textSize="22sp"
         android:layout_marginTop="10dp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         android:id="@+id/txtClassName"
         />

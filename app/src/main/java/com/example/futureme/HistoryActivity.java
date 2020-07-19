@@ -20,8 +20,6 @@ public class HistoryActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     private CollectionReference ref = FirebaseFirestore.getInstance().collection("Mails").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
             .collection("Details");
 

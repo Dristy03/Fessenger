@@ -27,8 +27,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -43,6 +46,7 @@ public class ContentMain extends AppCompatActivity  {
     private TextView textDate;
     private TextView textTime;
     private ProgressDialog pd;
+    private String currentDate;
     private String yearS;
     private String monthS;
     private String dayS;
@@ -87,6 +91,7 @@ public class ContentMain extends AppCompatActivity  {
                 message = editTextMessage.getText().toString().trim();
                 arrivalDate=textDate.getText().toString().trim();
                 title=editTextTitle.getText().toString().trim();
+
                 if(title.length()<1)
                 {
                     editTextTitle.setError("This field shouldn't be empty!");
@@ -100,13 +105,17 @@ public class ContentMain extends AppCompatActivity  {
                     pd.setTitle("Sending mail to the future...");
                     pd.show();
                     processTheCounter();
-
+                    editTextMessage.setText("");
+                    editTextTitle.setText("");
+                    textDate.setText("Date of receiving email");
                 }
 
             }
         });
     }
 
+
+    //increase the counter as a mail is written and storing the topic of the user
     private void processTheCounter() {
 
         email= Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
@@ -114,7 +123,18 @@ public class ContentMain extends AppCompatActivity  {
         DocumentReference dr = FirebaseFirestore.getInstance().collection("Users").document(email);
         dr.update("MailCounter", FieldValue.increment(1));
 
-
+       /* dr.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()){
+                        userTopic=document.getString("Topic");
+                    }
+                }
+            }
+        });
+*/
         dr.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -134,7 +154,9 @@ public class ContentMain extends AppCompatActivity  {
         });
     }
 
+    // updates to the MailDatabase
     private void addToMailDatabase() {
+
 
         Map<String,Object> map= new HashMap<>();
         Map<String,Object> mapp= new HashMap<>();
@@ -143,6 +165,7 @@ public class ContentMain extends AppCompatActivity  {
         map.put("Message",message);
         map.put("Title",title);
         map.put("Date",arrivalDate);
+        //map.put("Topic",userTopic);
 
         FirebaseFirestore.getInstance().collection("MailDatabase").document(yearS).collection(monthS)
                 .document(dayS).set(mapp)
@@ -178,6 +201,7 @@ public class ContentMain extends AppCompatActivity  {
                 });
     }
 
+    // updates to the Mails
     private void addToDatabase() {
 
 
@@ -188,12 +212,18 @@ public class ContentMain extends AppCompatActivity  {
         long a= YEAR*100+MONTH;
         a= a*100+DATE;
 
+        MONTH++;
+        String mmS = ((MONTH<10)?"0"+MONTH:MONTH+"");
+        String ddS = ((DATE<10)?"0"+DATE:DATE+"");
+        currentDate = ddS+"."+mmS+"."+YEAR;
+
         Map<String,Object> map1= new HashMap<>();
         map1.put("Email",email);
         map1.put("Message",message);
         map1.put("Title",title);
         map1.put("Date",arrivalDate);
         map1.put("Priority",a);
+        map1.put("CurrentDate",currentDate);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Mails").document(email).collection("Details").document(Id)
@@ -217,7 +247,7 @@ public class ContentMain extends AppCompatActivity  {
 
     }
 
-
+//arrival of mail
     private void handleDateButton() {
         final Calendar calendar = Calendar.getInstance();
         int YEAR = calendar.get(Calendar.YEAR);
@@ -241,7 +271,7 @@ public class ContentMain extends AppCompatActivity  {
 
             }
         }, YEAR, MONTH, DATE);
-
+        datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis());  //+1000*60*60*24
         datePickerDialog.show();
     }
 

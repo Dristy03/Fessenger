@@ -15,10 +15,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private TextView forget_pass;
     private FirebaseAuth mAuth;
+    String email,password;
     ProgressDialog pd;
 
     @Override
@@ -56,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String email= login_email.getText().toString().trim();
-                String password= login_password.getText().toString().trim();
+                email= login_email.getText().toString().trim();
+                password= login_password.getText().toString().trim();
                 if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())
                 {
                     login_email.setFocusable(true);
@@ -88,14 +97,24 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
+
+                            //Check whether the user is verified or not
+
+                            if(mAuth.getCurrentUser().isEmailVerified())
+                            {
+                                addtoDatabase();
+
+                            }
+                            else
+                            {
+                                pd.dismiss();
+                                Toast.makeText(LoginActivity.this,"Please verify your email id",Toast.LENGTH_LONG).show();
+                            }
+
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            pd.dismiss();
-                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            finish();
+
                         } else {
                             pd.dismiss();
                             // If sign in fails, display a message to the user.
@@ -108,6 +127,53 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private void addtoDatabase() {
+        FirebaseFirestore.getInstance().collection("Users").document(email)
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful())
+                {
+                    DocumentSnapshot document = task.getResult();
+
+                    if (document.exists()) {
+                        pd.dismiss();
+                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+
+                    }else{
+                        Map<String,Object> map= new HashMap<>();
+                        map.put("Email",email);
+                        map.put("Password",password);
+                        map.put("MailCounter",1000);
+                        FirebaseFirestore.getInstance().collection("Users").document(email).set(map)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        pd.dismiss();
+                                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                pd.dismiss();
+                                e.printStackTrace();
+                                Toast.makeText(LoginActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            }
+
+                        });
+                    }
+                }
+            }
+        });
+    }
+
 
 
 

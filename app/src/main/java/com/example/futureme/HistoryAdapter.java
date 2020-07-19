@@ -26,6 +26,7 @@ public class HistoryAdapter extends FirestoreRecyclerAdapter<History,HistoryAdap
     protected void onBindViewHolder(@NonNull HistoryAdapter.MyViewHolder holder, int position, @NonNull History model) {
 
         holder.textArrivalDate.setText(model.getDate());
+        holder.textCurrentDate.setText(model.getCurrentDate());
     }
 
     @NonNull
@@ -39,11 +40,13 @@ public class HistoryAdapter extends FirestoreRecyclerAdapter<History,HistoryAdap
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
        TextView textArrivalDate;
+       TextView textCurrentDate;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textArrivalDate=itemView.findViewById(R.id.dateId);
+            textCurrentDate=itemView.findViewById(R.id.todayDateId);
         }
     }
 

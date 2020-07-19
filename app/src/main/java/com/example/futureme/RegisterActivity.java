@@ -21,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,10 +29,9 @@ import java.util.Map;
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
     private EditText email_signup;
-    private EditText user_signup;
     private EditText password_signup;
     private EditText confirmPassword_signup;
-    private ImageButton btnBck;
+    private ImageButton btnBck,btnRefresh;
     private Button btnSignup;
     private FirebaseAuth mAuth;
     String email;
@@ -45,10 +45,10 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         email_signup = findViewById(R.id.email_signup);
-        user_signup = findViewById(R.id.username_signup);
         password_signup = findViewById(R.id.password_signup);
         confirmPassword_signup = findViewById(R.id.conpassword_signup);
         btnBck = findViewById(R.id.backbtn);
+        //btnRefresh=findViewById(R.id.refresbtn);
         btnSignup = findViewById(R.id.signup_btn);
         mAuth = FirebaseAuth.getInstance();
         pd = new ProgressDialog(this,R.style.DialogTheme);
@@ -67,7 +67,12 @@ public class RegisterActivity extends AppCompatActivity {
                 userSignup();
             }
         });
-
+       /* btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(getIntent());
+            }
+        });*/
     }
 
     private void userSignup() {
@@ -75,15 +80,11 @@ public class RegisterActivity extends AppCompatActivity {
          email = email_signup.getText().toString().trim();
          password = password_signup.getText().toString().trim();
          confirmPassword = confirmPassword_signup.getText().toString().trim();
-         username = user_signup.getText().toString().trim();
 
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             email_signup.setFocusable(true);
             email_signup.setError("Invalid Email Address");
 
-        } else if(user_signup.length()<1){
-            user_signup.setFocusable(true);
-            user_signup.setError("Username can't be empty");
         } else if (password.length() < 6) {
             password_signup.setError("Length should at least be 6");
             password_signup.setFocusable(true);
@@ -97,18 +98,38 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void RegisterUser(String email, String password) {
+
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            addtoDatabase();
+
+                                //verification of the user
+                                mAuth.getCurrentUser().sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        pd.dismiss();
+                                        Toast.makeText(RegisterActivity.this,"Verification Email has been sent! Please verify your email and login.",Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(intent);
+                                        finish();
 
 
-                        } else {
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+
+                                    }
+                                });
+
+                            }
+
+
+                         else {
                             // If sign in fails, display a message to the user.
                             pd.dismiss();
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -120,34 +141,11 @@ public class RegisterActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+
+
     }
 
-    private void addtoDatabase() {
-        Log.d(TAG, "addtoDatabase: started");
 
-        Map<String,Object> map= new HashMap<>();
-        map.put("Email",email);
-        map.put("Password",password);
-        map.put("Name",username);
-        map.put("MailCounter",1000);
-        FirebaseFirestore.getInstance().collection("Users").document(email).set(map)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        pd.dismiss();
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        finish();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                pd.dismiss();
-                e.printStackTrace();
-                Toast.makeText(RegisterActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
 
-        });
-    }
+
 }
