@@ -110,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                             {
                                 pd.dismiss();
                                 Toast.makeText(LoginActivity.this,"Please verify your email id",Toast.LENGTH_LONG).show();
+                                mAuth.signOut();
                             }
 
                             // Sign in success, update UI with the signed-in user's information

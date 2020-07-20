@@ -28,13 +28,19 @@ public class WelcomeActivity extends AppCompatActivity  {
       login.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+              Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+              intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+              startActivity(intent);
+              finish();
           }
       });
       register.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+              Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+              intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+              startActivity(intent);
+              finish();
           }
       });
 
@@ -45,7 +51,7 @@ public class WelcomeActivity extends AppCompatActivity  {
 public void onStart() {
     super.onStart();
     FirebaseUser currentUser = mAuth.getCurrentUser();
-    if(currentUser!=null)
+    if(currentUser!=null )
     {
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
         finish();
