@@ -58,7 +58,10 @@ public class RegisterActivity extends AppCompatActivity {
         btnBck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
         });
         btnSignup.setOnClickListener(new View.OnClickListener() {
