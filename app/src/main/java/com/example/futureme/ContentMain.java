@@ -84,7 +84,12 @@ public class ContentMain extends AppCompatActivity  {
                 handleDateButton();
             }
         });
-
+        textDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handleDateButton();
+            }
+        });
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -271,7 +276,7 @@ public class ContentMain extends AppCompatActivity  {
 
             }
         }, YEAR, MONTH, DATE);
-        datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis());  //+1000*60*60*24
+        datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis()+1000*60*60*24);  //+1000*60*60*24
         datePickerDialog.show();
     }
 

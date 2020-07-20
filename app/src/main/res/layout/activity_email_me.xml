@@ -26,6 +26,15 @@
             />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feel free to write to us. We will try to answer as soon as possible!"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:fontFamily="@font/wel"
+            android:textSize="18sp"/>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="anannadristy03@gmail.com"
@@ -36,7 +45,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
 
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/hellofont"
             android:gravity="center"/>
 

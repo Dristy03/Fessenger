@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -65,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.logout_dialog, null);
 
-        Button yesButton = view.findViewById(R.id.btnYes);
-        Button noButton = view.findViewById(R.id.btnNo);
+        TextView yesButton = view.findViewById(R.id.btnYes);
+        TextView noButton = view.findViewById(R.id.btnNo);
 
         final AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setView(view)

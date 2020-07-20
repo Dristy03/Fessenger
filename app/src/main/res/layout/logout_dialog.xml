@@ -8,31 +8,65 @@
     android:background="#CBEAF1"
     android:layout_margin="20dp"
     >
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/leave"
-        android:layout_gravity="center_horizontal"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Are you sure you want to leave Fessenger?"
-        android:textSize="22sp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        android:id="@+id/txtClassName"
-        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/mainicon1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Are you sure you want to leave fessenger?"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/wel2"
+            android:textSize="22sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="[Caution: If you logout from fessenger, you will not receive any notification anymore.]"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center">
-        <Button
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:gravity="right">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YES"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:id="@+id/btnYes"
+            android:layout_marginRight="50dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NO"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/btnNo"
+            android:layout_marginTop="10dp"/>
+
+        <!--<Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="YES"
@@ -50,8 +84,11 @@
             android:layout_gravity="center_horizontal"
             android:id="@+id/btnNo"
             android:layout_marginTop="10dp"
-            />
+            />-->
 
 
     </LinearLayout>
+
+
+
 </LinearLayout>
