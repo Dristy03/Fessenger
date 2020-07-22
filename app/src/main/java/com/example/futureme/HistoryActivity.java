@@ -44,7 +44,7 @@ public class HistoryActivity extends AppCompatActivity {
 
     private void setupRecView() {
 
-       Query query = ref.orderBy("Priority", Query.Direction.ASCENDING);
+       Query query = ref.orderBy("Priority", Query.Direction.DESCENDING);
 
 
         FirestoreRecyclerOptions<History> options= new FirestoreRecyclerOptions.Builder<History>()
