@@ -58,10 +58,8 @@ public class RegisterActivity extends AppCompatActivity {
         btnBck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),WelcomeActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
+                onBackPressed();
+
             }
         });
         btnSignup.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +74,14 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });*/
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(),WelcomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 
     private void userSignup() {
@@ -115,6 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     public void onSuccess(Void aVoid) {
                                         pd.dismiss();
                                         Toast.makeText(RegisterActivity.this,"Verification Email has been sent! Please verify your email and login.",Toast.LENGTH_LONG).show();
+                                        mAuth.signOut();
                                         Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(intent);
@@ -125,7 +132,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-
+                                        pd.dismiss();
+                                        Toast.makeText(RegisterActivity.this,e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
                                     }
                                 });
 
