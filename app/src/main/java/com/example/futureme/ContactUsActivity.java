@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class ContactUsActivity extends AppCompatActivity {
     private Button helpButton;
     private Button wrongButton;
     private Button remarksButton;
+    private ImageButton backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,14 @@ public class ContactUsActivity extends AppCompatActivity {
         helpButton=findViewById(R.id.helpBtnId);
         wrongButton=findViewById(R.id.wrongBtnId);
         remarksButton=findViewById(R.id.remarksBtnId);
+        backBtn=findViewById(R.id.backbtnId);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         helpButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -57,15 +57,15 @@ public class EmailMeActivity extends AppCompatActivity {
 
         mail=message.getText().toString().trim();
         String[] TO = {"anannadristy03@gmail.com"};
-        String[] CC = {FirebaseAuth.getInstance().getCurrentUser().getEmail()};
+       // String[] CC = {FirebaseAuth.getInstance().getCurrentUser().getEmail()};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("text/plain");
 
 
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "title");
+       // emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, title);
         emailIntent.putExtra(Intent.EXTRA_TEXT, mail);
 
         try {
