@@ -56,6 +56,7 @@ public class ContentMain extends AppCompatActivity  {
     private String arrivalDate;
     private String Id;
     private String mailId;
+    private String dateText="";
     int cnt;
 
 
@@ -105,7 +106,10 @@ public class ContentMain extends AppCompatActivity  {
                 {
                     editTextMessage.setError("This field shouldn't be empty!");
                     editTextMessage.setFocusable(true);
-                }else
+                }else if(dateText.length()<1)
+                {
+                   Toast.makeText(getApplicationContext(),"Choose your the date of receiving email!",Toast.LENGTH_LONG).show();
+                } else
                 {
                     pd.setTitle("Sending mail to the future...");
                     pd.show();
@@ -268,7 +272,7 @@ public class ContentMain extends AppCompatActivity  {
                 calendar1.set(Calendar.MONTH, month);
                 calendar1.set(Calendar.DATE, date);
 
-                String dateText = DateFormat.format("EEEE, MMM d, yyyy", calendar1).toString();
+                dateText = DateFormat.format("EEEE, MMM d, yyyy", calendar1).toString();
                 yearS = DateFormat.format("yyyy",calendar1).toString();
                 monthS = DateFormat.format("MM",calendar1).toString();
                 dayS = DateFormat.format("dd",calendar1).toString();

@@ -97,9 +97,9 @@
                 android:id="@+id/textviewId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date of receiving email"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/colorPrimary"/>
+                android:text="Date of receiving email"
+                android:textColor="@color/colorPrimary" />
 
         </LinearLayout>
 
